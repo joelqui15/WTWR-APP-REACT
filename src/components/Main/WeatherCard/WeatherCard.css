@@ -1,0 +1,25 @@
+.weatherCard__container {
+  max-width: 1360px;
+  height: 80px;
+  display: flex;
+  position: relative;
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+}
+
+.weatherCard__img {
+  width: 100%;
+  object-fit: cover;
+  object-position: top right;
+  border-radius: 12px;
+}
+
+.weatherCard__temp {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  font-size: 36px;
+  color: #ffffff;
+  margin: 0;
+}

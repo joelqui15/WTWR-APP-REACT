@@ -3,13 +3,13 @@
   font-weight: 700;
   font-style: Bold;
   font-size: 20px;
-  leading-trim: NONE;
+
   line-height: 24px;
   letter-spacing: 0%;
   max-width: 1360px;
   display: flex;
   background-color: #f3f3f3;
-  padding: 32px 40px 28px;
+  padding: 32px 0px 28px;
   justify-content: center;
   align-items: center;
 }
@@ -28,6 +28,9 @@
 .header__logo {
   margin: 0 24px 0 0;
   max-width: 89px;
+}
+.header__date-location {
+  margin: 0;
 }
 
 .header__avatar-section {
