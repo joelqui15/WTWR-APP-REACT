@@ -1,0 +1,14 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo-date {
+  display: flex;
+  gap: 24px;
+}
+
+.header__avatar-section {
+  display: flex;
+}
