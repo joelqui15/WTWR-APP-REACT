@@ -13,7 +13,7 @@ function Header() {
       <header className="header">
         <img className="header__logo" src={Logo} alt="WTWR LOGO" />
         <p className="header__date-location">{currentDate}, Anchorage</p>
-        <button className="header__add-btn">+Add clothes</button>
+        <button className="header__add-btn">+ Add clothes</button>
         <div className="header__avatar-section">
           <p className="header__avatar-name">Joel Quinones</p>
           <img

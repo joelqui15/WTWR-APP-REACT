@@ -1,14 +1,43 @@
 .header {
-  width: 100%;
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0%;
+  max-width: 1360px;
   display: flex;
-  justify-content: space-between;
+  background-color: #f3f3f3;
+  padding: 32px 40px 28px;
+  justify-content: center;
+  align-items: center;
+}
+.header__add-btn {
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
-.header__logo-date {
-  display: flex;
-  gap: 24px;
+.header__add-btn:hover {
+  border-bottom: 1px solid black;
+}
+
+.header__logo {
+  margin: 0 24px 0 0;
+  max-width: 89px;
 }
 
 .header__avatar-section {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__avatar-name {
+  margin: 0 0 0 20px;
+  white-space: nowrap;
 }
