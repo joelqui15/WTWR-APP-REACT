@@ -1,11 +1,14 @@
 .card {
   max-width: 325px;
-
+  width: 100%;
   list-style-type: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  border: 1px solid #0000004d;
+  border-radius: 19px;
+  overflow: hidden;
 }
 
 .card__title {
@@ -23,6 +26,4 @@
 
 .card__image {
   width: 100%;
-  object-fit: cover;
-  border-radius: 19px;
 }

@@ -1,17 +1,20 @@
 .cards {
   max-width: 1360px;
-  font-family: Cabinet Grotesk;
+  font-family:
+    Cabinet Grotesk,
+    Arial,
+    Helvetica,
+    sans-serif;
   font-weight: 700;
   font-style: Bold;
 
   line-height: 20px;
 }
 .cards__list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 19px;
-  justify-content: center;
-  align-items: center;
+
   width: 100%;
   margin: 0;
   padding: 0;
