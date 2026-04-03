@@ -4,14 +4,23 @@ import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import { defaultClothingItems } from "../../utils/constants.js";
+import { getWeatherData } from "../../utils/weatherApi.js";
 
 function App() {
   //state
+
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
-  const [weatherData, setWeatherData] = useState({ type: "" });
+  const [weatherData, setWeatherData] = useState("");
   const [activeModal, setAcvtiveModal] = useState("");
-  function openModal() {
-    setAcvtiveModal("add-garment");
+
+  //container for all modal conditions to open
+  const modals = {
+    add: "add-garment",
+    preview: "previewActive",
+  };
+
+  function openModal(modalName) {
+    setAcvtiveModal(modalName);
   }
 
   function closeModal() {
@@ -21,15 +30,19 @@ function App() {
     <>
       <div className="page">
         <div className="page__content">
-          <Header weatherData={weatherData} openModal={openModal} />
+          <Header
+            weatherData={weatherData}
+            openModal={() => {
+              openModal(modals.add);
+            }}
+          />
           <Main clothingItems={clothingItems} weatherData={weatherData} />
         </div>
         <ModalWithForm
-          isOpen={activeModal === "add-garment"}
+          isOpen={activeModal === modals.add}
           title="New garment"
           buttonText="Add garment"
           onClose={closeModal}
-          activeModal={activeModal}
         >
           <fieldset className=" form__fieldset form__fieldset-info">
             <label htmlFor="name" className="form__label form__label-name">
