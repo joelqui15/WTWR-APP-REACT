@@ -6,15 +6,20 @@ function Main({ clothingItems, weatherData }) {
   return (
     <>
       <main className="main">
-        <WeatherCard />
+        <WeatherCard weatherData={weatherData} />
         <section className="cards">
           <p className="cards__header">
-            Today is 75&deg;F / you may want to wear:
+            Today is {Math.round(weatherData.temp)}&deg;F / you may want to
+            wear:
           </p>
           <ul className="cards__list">
-            {clothingItems.map((item) => {
-              return <ItemCard item={item} key={item._id} />;
-            })}
+            {clothingItems
+              .filter((item) => {
+                return item.weather === weatherData.type;
+              })
+              .map((item) => {
+                return <ItemCard item={item} key={item._id} />;
+              })}
           </ul>
         </section>
       </main>

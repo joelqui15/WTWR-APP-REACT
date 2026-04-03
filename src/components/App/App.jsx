@@ -1,17 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
-import { defaultClothingItems } from "../../utils/constants.js";
-import { getWeatherData } from "../../utils/weatherApi.js";
+import {
+  defaultClothingItems,
+  coordinates,
+  ApiKey,
+} from "../../utils/constants.js";
+import { getWeatherData, filterWeatherData } from "../../utils/weatherApi.js";
 
 function App() {
   //state
 
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
-  const [weatherData, setWeatherData] = useState("");
+  const [weatherData, setWeatherData] = useState({
+    type: "",
+    temp: {
+      F: 999,
+      C: 999,
+    },
+  });
   const [activeModal, setAcvtiveModal] = useState("");
+
+  useEffect(() => {
+    getWeatherData(coordinates, ApiKey)
+      .then((data) => {
+        const filteredData = filterWeatherData(data);
+        setWeatherData(filteredData);
+      })
+      .catch(console.error);
+  });
 
   //container for all modal conditions to open
   const modals = {

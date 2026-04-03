@@ -2,7 +2,7 @@ import "./Header.css";
 import Logo from "../../images/Logo.svg";
 import AvatarPic from "../../images/user-avatar.png";
 
-function Header({ openModal }) {
+function Header({ openModal, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -12,7 +12,9 @@ function Header({ openModal }) {
     <>
       <header className="header">
         <img className="header__logo" src={Logo} alt="WTWR LOGO" />
-        <p className="header__date-location">{currentDate}, Anchorage</p>
+        <p className="header__date-location">
+          {currentDate}, {weatherData.city}
+        </p>
         <button className="header__add-btn" onClick={openModal}>
           + Add clothes
         </button>

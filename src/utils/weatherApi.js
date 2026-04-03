@@ -1,7 +1,3 @@
-import { coordinates, ApiKey } from "./constants.js";
-
-const { lat, lon } = coordinates;
-
 function handleServerResponse(res) {
   if (res.ok) {
     return res.json();
@@ -10,7 +6,7 @@ function handleServerResponse(res) {
   }
 }
 
-function getWeatherData() {
+function getWeatherData({ lat, lon }, ApiKey) {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${ApiKey}`,
   ).then((res) => {
@@ -18,8 +14,17 @@ function getWeatherData() {
   });
 }
 
+const filterWeatherData = (data) => {
+  const result = {};
+  result.city = data.name;
+
+  result.temp = data.main.temp;
+  result.type = getWeatherCondition(result.temp);
+  return result;
+};
+
 function getWeatherCondition(temp) {
-  if (temp >= 86) {
+  if (temp > 86) {
     return "hot";
   } else if (temp >= 66) {
     return "warm";
@@ -27,4 +32,4 @@ function getWeatherCondition(temp) {
     return "cold";
   }
 }
-export { getWeatherData, getWeatherCondition };
+export { getWeatherData, filterWeatherData };
