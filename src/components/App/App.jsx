@@ -13,14 +13,24 @@ function App() {
   function openModal() {
     setAcvtiveModal("add-garment");
   }
+
+  function closeModal() {
+    setAcvtiveModal("");
+  }
   return (
     <>
       <div className="page">
         <div className="page__content">
-          <Header weatherData={weatherData} />
+          <Header weatherData={weatherData} openModal={openModal} />
           <Main clothingItems={clothingItems} weatherData={weatherData} />
         </div>
-        <ModalWithForm isOpen={activeModal === "add-garment"}>
+        <ModalWithForm
+          isOpen={activeModal === "add-garment"}
+          title="New garment"
+          buttonText="Add garment"
+          onClose={closeModal}
+          activeModal={activeModal}
+        >
           <fieldset className=" form__fieldset form__fieldset-info">
             <label htmlFor="name" className="form__label form__label-name">
               Name
