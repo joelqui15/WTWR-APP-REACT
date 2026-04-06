@@ -22,6 +22,7 @@ function App() {
     },
   });
   const [activeModal, setAcvtiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState("");
 
   useEffect(() => {
     getWeatherData(coordinates, ApiKey)
@@ -35,7 +36,7 @@ function App() {
   //container for all modal conditions to open
   const modals = {
     add: "add-garment",
-    preview: "previewActive",
+    preview: "preview-card",
   };
 
   function openModal(modalName) {
@@ -44,6 +45,11 @@ function App() {
 
   function closeModal() {
     setAcvtiveModal("");
+  }
+
+  function handleCardClick(card) {
+    setSelectedCard(card);
+    openModal(modals.preview);
   }
   return (
     <>
@@ -55,7 +61,12 @@ function App() {
               openModal(modals.add);
             }}
           />
-          <Main clothingItems={clothingItems} weatherData={weatherData} />
+          <Main
+            clothingItems={clothingItems}
+            weatherData={weatherData}
+            handleCardClick={() => handleCardClick()}
+            onClose={closeModal}
+          />
         </div>
         <ModalWithForm
           isOpen={activeModal === modals.add}
@@ -131,6 +142,7 @@ function App() {
             </label>
           </fieldset>
         </ModalWithForm>
+        <itemModal onclose={closeModal} title={""} />
       </div>
     </>
   );
