@@ -16,6 +16,14 @@
 }
 
 .modal__form {
+  font-family:
+    Cabinet Grotesk,
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
   max-width: 496px;
   width: 100%;
   display: flex;
@@ -25,20 +33,71 @@
   border-radius: 20px;
   border: 1px;
   background-color: rgba(255, 255, 255, 1);
+  position: relative;
+  padding: 28px 28px 32px 28px;
+}
+.modal__close-btn {
+  max-width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-size: contain;
+  background: url(../../images/modalclose.svg) no-repeat center;
+  border: none;
+
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.modal__title {
+  margin: 0;
+  font-size: 16px;
 }
 
 .form__fieldset-info {
   display: flex;
   flex-direction: column;
-  margin: 24px 28px;
+  margin: 24px 0;
   padding: 0;
   border: none;
+  gap: 24px;
+}
+
+.form__label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .form__fieldset-radio {
   border: none;
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
   flex-direction: column;
-  margin-left: 28px;
+  margin: 0;
   padding: 0;
+  max-width: 173px;
+  gap: 8px;
+}
+
+.form__radio-legend {
+  margin-bottom: 12px;
+}
+
+.form__label-radio {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.form__input-radio {
+  accent-color: black;
+}
+
+.modal__submit-btn {
+  max-width: 130px;
+  padding: 8px 16px;
+  margin: 32px 0 0 0;
+  font-size: 16px;
 }

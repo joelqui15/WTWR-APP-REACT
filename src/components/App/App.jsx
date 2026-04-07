@@ -100,12 +100,10 @@ function App() {
             </label>
           </fieldset>
           <fieldset className=" form__fieldset form__fieldset-radio">
-            <label
-              htmlFor="radio__hot"
-              className="form__label form__label-radio"
-            >
+            <legend className="form__radio-legend">
               Select the weather type:
-              <br />
+            </legend>
+            <label htmlFor="radio__hot" className=" form__label-radio">
               <input
                 value="hot"
                 id="radio__hot"
@@ -113,12 +111,9 @@ function App() {
                 name="weather"
                 className="form__input form__input-radio"
               />
-              Hot
+              <span className="radio__text">Hot</span>
             </label>
-            <label
-              htmlFor="radio__warm"
-              className="form__label form__label-radio"
-            >
+            <label htmlFor="radio__warm" className=" form__label-radio">
               <input
                 value="warm"
                 id="radio__warm"
@@ -128,10 +123,7 @@ function App() {
               />
               Warm
             </label>
-            <label
-              htmlFor="radio__cold"
-              className="form__label form__label-radio"
-            >
+            <label htmlFor="radio__cold" className=" form__label-radio">
               <input
                 value="cold"
                 id="radio__cold"

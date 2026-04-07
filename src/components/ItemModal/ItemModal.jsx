@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import "../ItemModal/ItemModal.css";
-import closeBtn from "../../images/modalCloseBtn.svg";
 
 function ItemModal({ onClose, isOpen, card }) {
   useEffect(() => {
@@ -42,7 +41,9 @@ function ItemModal({ onClose, isOpen, card }) {
           />
           <div className="modal__footer">
             <p className="modal__title_type_preview">{card.name}</p>
-            <p className="modal__weather_type_preview">{card.weather}</p>
+            <p className="modal__weather_type_preview">
+              Weather: {card.weather}
+            </p>
           </div>
         </div>
       </div>

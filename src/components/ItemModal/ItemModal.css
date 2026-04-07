@@ -7,9 +7,20 @@
 }
 
 .modal__preview {
+  max-width: 498px;
   display: flex;
   flex-direction: column;
   position: relative;
+  font-family:
+    Cabinet Grotesk,
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-weight: 700;
+
+  font-size: 20px;
+
+  line-height: 24px;
 }
 
 .modal__close-btn_type_preview {
@@ -22,6 +33,7 @@
   top: 24px;
   right: 24px;
   border: none;
+  cursor: pointer;
 }
 .modal__image_type_preview {
   max-width: 498px;
@@ -32,4 +44,14 @@
 
 .modal__footer {
   background-color: white;
+  border-radius: 0 0 16px 16px;
+  padding: 0 0 32px 32px;
+}
+
+.modal__title_type_preview {
+  margin: 20px 0 12px;
+}
+
+.modal__weather_type_preview {
+  margin: 0;
 }
