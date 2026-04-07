@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
+import ItemModal from "../ItemModal/ItemModal.jsx";
 import {
   defaultClothingItems,
   coordinates,
@@ -22,7 +23,7 @@ function App() {
     },
   });
   const [activeModal, setAcvtiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
 
   useEffect(() => {
     getWeatherData(coordinates, ApiKey)
@@ -31,7 +32,7 @@ function App() {
         setWeatherData(filteredData);
       })
       .catch(console.error);
-  });
+  }, []);
 
   //container for all modal conditions to open
   const modals = {
@@ -64,8 +65,8 @@ function App() {
           <Main
             clothingItems={clothingItems}
             weatherData={weatherData}
-            handleCardClick={() => handleCardClick()}
             onClose={closeModal}
+            handleCardClick={handleCardClick}
           />
         </div>
         <ModalWithForm
@@ -142,7 +143,11 @@ function App() {
             </label>
           </fieldset>
         </ModalWithForm>
-        <itemModal onclose={closeModal} title={""} />
+        <ItemModal
+          onClose={closeModal}
+          isOpen={activeModal === modals.preview}
+          card={selectedCard}
+        />
       </div>
     </>
   );

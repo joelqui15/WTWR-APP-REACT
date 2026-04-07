@@ -1,0 +1,35 @@
+.modal {
+  visibility: visible;
+}
+
+.modal__hidden_type_preview {
+  visibility: hidden;
+}
+
+.modal__preview {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.modal__close-btn_type_preview {
+  background-image: url(../../images/closeBtn.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border: none;
+}
+.modal__image_type_preview {
+  max-width: 498px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.modal__footer {
+  background-color: white;
+}

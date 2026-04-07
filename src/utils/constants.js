@@ -102,6 +102,6 @@ const coordinates = {
   lon: -149.9003,
 };
 
-const ApiKey = "d8e645353990ef59518316c5d9d331f8";
+const ApiKey = "76464173999be743bc21ef4d033211ba";
 
 export { defaultClothingItems, coordinates, ApiKey };
