@@ -17,11 +17,11 @@ function App() {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [weatherData, setWeatherData] = useState({
     type: "",
-    temp: {
-      F: 999,
-      C: 999,
-    },
+    temp: { F: 999 },
+    city: "Unkown location",
+    condition: "",
   });
+
   const [activeModal, setAcvtiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
 

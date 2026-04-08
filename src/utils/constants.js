@@ -1,3 +1,68 @@
+const weatherDataOptions = [
+  //day
+  {
+    isDay: true,
+    condition: "clear",
+    url: new Url("", import.meta.url.href),
+  },
+  {
+    isDay: true,
+    condition: "cloudy",
+    url: new Url("", import.meta.url.href),
+  },
+  {
+    isDay: true,
+    condition: "rain",
+    url: new Url("", import.meta.url.href),
+  },
+  {
+    isDay: true,
+    condition: "storm",
+    url: new Url("", import.meta.url.href),
+  },
+  {
+    isDay: true,
+    condition: "snow",
+    url: new Url("", import.meta.url.href),
+  },
+  {
+    isDay: true,
+    condition: "fog",
+    url: new Url("", import.meta.url.href),
+  },
+  //night
+  {
+    isDay: false,
+    condition: "clear",
+    url: new Url("", import.meta.url.href),
+  },
+  {
+    isDay: false,
+    condition: "cloudy",
+    url: new Url("", import.meta.url.href),
+  },
+  {
+    isDay: false,
+    condition: "rain",
+    url: new Url("", import.meta.url.href),
+  },
+  {
+    isDay: false,
+    condition: "storm",
+    url: new Url("", import.meta.url.href),
+  },
+  {
+    isDay: false,
+    condition: "snow",
+    url: new Url("", import.meta.url.href),
+  },
+  {
+    isDay: false,
+    condition: "fog",
+    url: new Url("", import.meta.url.href),
+  },
+];
+
 const defaultClothingItems = [
   {
     _id: 1,

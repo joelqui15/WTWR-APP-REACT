@@ -17,11 +17,17 @@ function getWeatherData({ lat, lon }, ApiKey) {
 const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
-
-  result.temp = data.main.temp;
+  result.temp = { F: data.main.temp };
   result.type = getWeatherCondition(result.temp);
+  result.conditiion = data.weather[0].main.toLowerCase();
+  result.isDay = isDay(data.sys, Date.now());
+
   return result;
 };
+
+function isDay({ sunrise, sunset }, now) {
+  return sunrise * 1000 < now && sunset * 1000 < now;
+}
 
 function getWeatherCondition(temp) {
   if (temp > 86) {
