@@ -19,14 +19,16 @@ const filterWeatherData = (data) => {
   result.city = data.name;
   result.temp = { F: data.main.temp };
   result.type = getWeatherCondition(result.temp);
-  result.conditiion = data.weather[0].main.toLowerCase();
+  result.condition = data.weather[0].main.toLowerCase();
   result.isDay = isDay(data.sys, Date.now());
 
   return result;
 };
 
 function isDay({ sunrise, sunset }, now) {
-  return sunrise * 1000 < now && sunset * 1000 < now;
+  console.log(sunrise, sunset, now);
+
+  return sunrise * 1000 < now && sunset * 1000 > now;
 }
 
 function getWeatherCondition(temp) {
