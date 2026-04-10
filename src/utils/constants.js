@@ -64,6 +64,15 @@ const weatherDataOptions = [
   },
 ];
 
+const weatherOptionsDefault = {
+  day: {
+    url: new URL("../images/day/default.png", import.meta.url).href,
+  },
+  night: {
+    url: new URL("../images/night/default.png", import.meta.url).href,
+  },
+};
+
 const defaultClothingItems = [
   {
     _id: 1,
@@ -170,4 +179,10 @@ const coordinates = {
 
 const ApiKey = "76464173999be743bc21ef4d033211ba";
 
-export { defaultClothingItems, coordinates, ApiKey, weatherDataOptions };
+export {
+  defaultClothingItems,
+  coordinates,
+  ApiKey,
+  weatherDataOptions,
+  weatherOptionsDefault,
+};

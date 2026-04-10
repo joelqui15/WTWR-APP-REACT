@@ -23,3 +23,10 @@
   color: #ffffff;
   margin: 0;
 }
+
+@media screen and (max-width: 375px) {
+  .weatherCard__container {
+    max-width: 343px;
+    height: 80px;
+  }
+}

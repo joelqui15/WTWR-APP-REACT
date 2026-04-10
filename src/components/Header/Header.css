@@ -44,3 +44,32 @@
   margin: 0 0 0 20px;
   white-space: nowrap;
 }
+
+@media screen and (max-width: 768px) {
+  .header {
+    max-width: 350px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .header__logo {
+    max-width: 89px;
+  }
+
+  .header__avatar-name {
+    display: none;
+  }
+
+  .header__add-btn {
+    display: none;
+  }
+
+  .header__avatar-pic {
+    display: none;
+  }
+
+  .header__date-location {
+    display: none;
+  }
+}

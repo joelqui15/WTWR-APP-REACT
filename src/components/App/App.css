@@ -1,3 +1,7 @@
+* {
+  outline: 1px solid red;
+}
+
 .page {
   background-color: #f3f3f3;
 }
@@ -13,4 +17,11 @@
   border-bottom: 2px solid black;
   outline: none;
   width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .page__content {
+    max-width: 375px;
+    padding: 16px 18px;
+  }
 }

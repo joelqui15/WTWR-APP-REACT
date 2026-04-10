@@ -26,8 +26,6 @@ const filterWeatherData = (data) => {
 };
 
 function isDay({ sunrise, sunset }, now) {
-  console.log(sunrise, sunset, now);
-
   return sunrise * 1000 < now && sunset * 1000 > now;
 }
 
