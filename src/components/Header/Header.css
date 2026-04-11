@@ -51,10 +51,13 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    padding: 0;
+    margin-bottom: 16px;
   }
 
   .header__logo {
     max-width: 89px;
+    margin-bottom: 32px;
   }
 
   .header__avatar-name {
@@ -66,10 +69,6 @@
   }
 
   .header__avatar-pic {
-    display: none;
-  }
-
-  .header__date-location {
     display: none;
   }
 }

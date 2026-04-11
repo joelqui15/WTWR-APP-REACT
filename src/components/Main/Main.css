@@ -27,16 +27,37 @@
 }
 
 @media screen and (max-width: 768px) {
+  .main {
+    width: 100%;
+
+    overflow-x: hidden;
+  }
+
   .cards {
-    max-width: 343px;
+    width: 100%;
+  }
+
+  .cards__list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+
+  .cards__header {
+    width: 100%;
+    margin: 32px 0 20px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  /* NEED TO CENTER CARDS INSIDE CONTAINER OVERFLOW TO THE RIGHT */
+  .cards__list {
+    justify-items: center;
   }
 
   .cards__list {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-  }
-
-  .cards__header {
-    max-width: 343px;
+    width: 100%;
   }
 }
