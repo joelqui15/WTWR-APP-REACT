@@ -49,8 +49,7 @@
   }
 }
 
-@media screen and (max-width: 375px) {
-  /* NEED TO CENTER CARDS INSIDE CONTAINER OVERFLOW TO THE RIGHT */
+@media screen and (max-width: 380px) {
   .cards__list {
     justify-items: center;
   }

@@ -55,3 +55,9 @@
 .modal__weather_type_preview {
   margin: 0;
 }
+
+@media screen and (max-width: 380px) {
+  .modal__preview {
+    max-width: 343px;
+  }
+}

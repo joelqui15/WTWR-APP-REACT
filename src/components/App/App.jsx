@@ -4,6 +4,7 @@ import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import ItemModal from "../ItemModal/ItemModal.jsx";
+import Footer from "../Footer/Footer.jsx";
 import {
   defaultClothingItems,
   coordinates,
@@ -68,6 +69,7 @@ function App() {
             onClose={closeModal}
             handleCardClick={handleCardClick}
           />
+          <Footer />
         </div>
         <ModalWithForm
           isOpen={activeModal === modals.add}

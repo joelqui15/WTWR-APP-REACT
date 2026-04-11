@@ -32,4 +32,8 @@
   .card {
     max-width: 162px;
   }
+
+  .card__title {
+    top: 7px;
+  }
 }
