@@ -13,9 +13,7 @@ function WeatherCard({ weatherData }) {
   });
 
   let weatherOptions;
-  //let weatherOptions;
-  // set default value for night and day cards
-  // if statement needed creat new objext in const for default value
+
   if (filteredWeatherOptions.length === 0) {
     weatherOptions = weatherOptionsDefault[weatherData.isDay ? "day" : "night"];
   } else {

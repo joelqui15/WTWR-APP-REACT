@@ -2,16 +2,19 @@ import WeatherCard from "../Main/WeatherCard/WeatherCard.jsx";
 import ItemCard from "../Main/ItemCard/ItemCard.jsx";
 import "./Main.css";
 
-function Main({ clothingItems, weatherData, handleCardClick }) {
+function Main({
+  clothingItems,
+  weatherData,
+  handleCardClick,
+  isChecked,
+  toggleTempDegree,
+}) {
   return (
     <>
       <main className="main">
         <WeatherCard weatherData={weatherData} />
         <section className="cards">
-          <p className="cards__header">
-            Today is {Math.round(weatherData.temp.F)}&deg;F / you may want to
-            wear:
-          </p>
+          {}
           <ul className="cards__list">
             {clothingItems
               .filter((item) => {

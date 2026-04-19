@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
@@ -18,13 +19,14 @@ function App() {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [weatherData, setWeatherData] = useState({
     type: "",
-    temp: { F: 999 },
+    temp: { F: 999, C: 999 },
     city: "Unkown location",
     condition: "",
   });
 
   const [activeModal, setAcvtiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [checked, setChecked] = useState("F");
 
   useEffect(() => {
     getWeatherData(coordinates, ApiKey)
@@ -40,6 +42,20 @@ function App() {
     add: "add-garment",
     preview: "preview-card",
   };
+
+  function handleToggleSwitch() {
+    setChecked(() => {
+      return checked === "F" ? "C" : "F";
+    });
+  }
+
+  function toggleTempDegree() {
+    if (checked === "C") {
+      return (weatherData.temp - 32) * (5 / 9);
+    } else {
+      return weatherData.temp;
+    }
+  }
 
   function openModal(modalName) {
     setAcvtiveModal(modalName);
@@ -62,12 +78,16 @@ function App() {
             openModal={() => {
               openModal(modals.add);
             }}
+            isChecked={checked}
+            onChange={handleToggleSwitch}
           />
           <Main
             clothingItems={clothingItems}
             weatherData={weatherData}
             onClose={closeModal}
             handleCardClick={handleCardClick}
+            isChecked={checked}
+            toggleTempDegree={toggleTempDegree}
           />
           <Footer />
         </div>
