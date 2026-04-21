@@ -4,7 +4,7 @@ import {
   weatherOptionsDefault,
 } from "../../../utils/constants";
 
-function WeatherCard({ weatherData }) {
+function WeatherCard({ weatherData, handleTempUnit }) {
   const filteredWeatherOptions = weatherDataOptions.filter((option) => {
     return (
       option.isDay === weatherData.isDay &&
@@ -27,9 +27,7 @@ function WeatherCard({ weatherData }) {
           src={weatherOptions?.url}
           alt={`displaying ${weatherOptions?.condition} at ${weatherOptions?.isDay ? "day" : "night"}`}
         />
-        <p className="weatherCard__temp">
-          {Math.round(weatherData.temp.F)}&deg;F
-        </p>
+        <p className="weatherCard__temp">{handleTempUnit()}&deg;</p>
       </section>
     </>
   );

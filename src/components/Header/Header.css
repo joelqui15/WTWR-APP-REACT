@@ -12,6 +12,7 @@
   padding: 32px 0px 28px;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .header__add-btn {
   margin-left: auto;

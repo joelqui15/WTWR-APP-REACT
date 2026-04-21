@@ -1,20 +1,31 @@
+import { useContext } from "react";
+import { CurrentTempContext } from "../../context/CurrentTemperatureUnitContext.js";
 import WeatherCard from "../Main/WeatherCard/WeatherCard.jsx";
 import ItemCard from "../Main/ItemCard/ItemCard.jsx";
 import "./Main.css";
 
-function Main({
-  clothingItems,
-  weatherData,
-  handleCardClick,
-  isChecked,
-  toggleTempDegree,
-}) {
+function Main({ clothingItems, weatherData, handleCardClick }) {
+  const { currentTemperatureUnit } = useContext(CurrentTempContext);
+
+  const handleTempUnit = () => {
+    if (currentTemperatureUnit === "C") {
+      return weatherData.temp.C;
+    } else {
+      return weatherData.temp.F;
+    }
+  };
+
   return (
     <>
       <main className="main">
-        <WeatherCard weatherData={weatherData} />
+        <WeatherCard
+          weatherData={weatherData}
+          handleTempUnit={handleTempUnit}
+        />
         <section className="cards">
-          {}
+          <p className="cards__header">
+            Today is {handleTempUnit()}&deg; / you may want to wear:
+          </p>
           <ul className="cards__list">
             {clothingItems
               .filter((item) => {

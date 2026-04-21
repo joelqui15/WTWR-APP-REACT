@@ -4,7 +4,7 @@ import Logo from "../../images/Logo.svg";
 import AvatarPic from "../../images/user-avatar.png";
 import ToggleSwitch from "./ToggleSwitch/ToggleSwitch";
 
-function Header({ isChecked, openModal, weatherData, onChange }) {
+function Header({ openModal, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -17,7 +17,7 @@ function Header({ isChecked, openModal, weatherData, onChange }) {
         <p className="header__date-location">
           {currentDate}, {weatherData.city}
         </p>
-        <ToggleSwitch onChange={onChange} isChecked={isChecked} />
+        <ToggleSwitch />
         <button className="header__add-btn" onClick={openModal}>
           + Add clothes
         </button>
