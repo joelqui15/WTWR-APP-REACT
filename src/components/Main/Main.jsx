@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CurrentTempContext } from "../../context/CurrentTemperatureUnitContext.js";
+import { CurrentTempContext } from "../../context/CurrentTemperatureUnitContext.jsx";
 import WeatherCard from "../Main/WeatherCard/WeatherCard.jsx";
 import ItemCard from "../Main/ItemCard/ItemCard.jsx";
 import "./Main.css";
@@ -21,10 +21,12 @@ function Main({ clothingItems, weatherData, handleCardClick }) {
         <WeatherCard
           weatherData={weatherData}
           handleTempUnit={handleTempUnit}
+          currentTemperatureUnit={currentTemperatureUnit}
         />
         <section className="cards">
           <p className="cards__header">
-            Today is {handleTempUnit()}&deg; / you may want to wear:
+            Today is {handleTempUnit()}&deg;{currentTemperatureUnit} / you may
+            want to wear:
           </p>
           <ul className="cards__list">
             {clothingItems

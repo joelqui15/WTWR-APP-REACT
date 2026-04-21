@@ -5,14 +5,16 @@ import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import ItemModal from "../ItemModal/ItemModal.jsx";
+import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import Footer from "../Footer/Footer.jsx";
+
 import {
   defaultClothingItems,
   coordinates,
   ApiKey,
 } from "../../utils/constants.js";
 import { getWeatherData, filterWeatherData } from "../../utils/weatherApi.js";
-import { CurrentTempContext } from "../../context/CurrentTemperatureUnitContext.js";
+import { CurrentTempContext } from "../../context/CurrentTemperatureUnitContext.jsx";
 
 function App() {
   //state
@@ -23,6 +25,7 @@ function App() {
     temp: { F: 999, C: 999 },
     city: "Unkown location",
     condition: "",
+    isDay: false,
   });
   const [activeModal, setAcvtiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -61,6 +64,7 @@ function App() {
     setSelectedCard(card);
     openModal(modals.preview);
   }
+
   return (
     <>
       <CurrentTempContext.Provider
@@ -155,6 +159,7 @@ function App() {
             isOpen={activeModal === modals.preview}
             card={selectedCard}
           />
+          <AddItemModal />
         </div>
       </CurrentTempContext.Provider>
     </>
