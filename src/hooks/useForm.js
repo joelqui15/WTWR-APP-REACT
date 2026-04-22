@@ -8,7 +8,7 @@ function useForm(defaultValues) {
     setValues({ ...values, [name]: value });
   }
 
-  return [values, handleChange, setValues];
+  return { values, handleChange, setValues };
 }
 
 export default useForm;

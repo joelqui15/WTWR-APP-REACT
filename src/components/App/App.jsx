@@ -63,9 +63,13 @@ function App() {
     openModal(modals.preview);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault;
-    setClothingItems([item, ...clothingItems]);
+  function handleAddSubmit(data) {
+    const inputValues = {
+      name: data.name,
+      image: data.link,
+      weather: data.weather,
+    };
+    setClothingItems([data, ...clothingItems]);
   }
 
   return (
@@ -107,6 +111,7 @@ function App() {
             title="New garment"
             buttonText="Add garment"
             onClose={closeModal}
+            onAddItem={handleAddSubmit}
           />
         </div>
       </CurrentTempContext.Provider>
