@@ -1,9 +1,23 @@
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
+import useForm from "../../hooks/useForm.js";
 
-function AddItemModal({ isOpen, onClose }) {
+function AddItemModal({ isOpen, onClose, handleSubmit }) {
+  const [values, handleChange] = useForm({
+    name: "",
+    image: "",
+    type: "",
+  });
   return (
     <>
-      <ModalWithForm>
+      <ModalWithForm
+        isOpen={isOpen}
+        onClose={onClose}
+        title="New garment"
+        name="new-card"
+        buttonText="add-garment"
+        onSubmit={handleSubmit}
+        handleChange={handleChange}
+      >
         <fieldset className=" form__fieldset form__fieldset-info">
           <label htmlFor="name" className="form__label form__label-name">
             Name
@@ -14,6 +28,7 @@ function AddItemModal({ isOpen, onClose }) {
               name="name"
               className="form__input form__input-name"
               placeholder="Name"
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="url" className="form__label form__label-image">
@@ -25,6 +40,7 @@ function AddItemModal({ isOpen, onClose }) {
               name="url"
               className="form__input form__input-name"
               placeholder="Image URL"
+              onChange={handleChange}
             />
           </label>
         </fieldset>
@@ -39,6 +55,7 @@ function AddItemModal({ isOpen, onClose }) {
               type="radio"
               name="weather"
               className="form__input form__input-radio"
+              onChange={handleChange}
             />
             <span className="radio__text">Hot</span>
           </label>
@@ -49,6 +66,7 @@ function AddItemModal({ isOpen, onClose }) {
               type="radio"
               name="weather"
               className="form__input form__input-radio"
+              onChange={handleChange}
             />
             Warm
           </label>
@@ -59,6 +77,7 @@ function AddItemModal({ isOpen, onClose }) {
               type="radio"
               name="weather"
               className="form__input form__input-radio"
+              onChange={handleChange}
             />
             Cold
           </label>
