@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
+import Profile from "../Profile/Profile.jsx";
 import ItemModal from "../ItemModal/ItemModal.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import Footer from "../Footer/Footer.jsx";
@@ -81,12 +82,30 @@ function App() {
                 openModal(modals.add);
               }}
             />
-            <Main
-              clothingItems={clothingItems}
-              weatherData={weatherData}
-              onClose={closeModal}
-              handleCardClick={handleCardClick}
-            />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main
+                    clothingItems={clothingItems}
+                    weatherData={weatherData}
+                    onClose={closeModal}
+                    handleCardClick={handleCardClick}
+                  />
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <Profile
+                    clothingItems={clothingItems}
+                    openModal={() => {
+                      openModal(modals.add);
+                    }}
+                  />
+                }
+              />
+            </Routes>
 
             <Footer />
           </div>

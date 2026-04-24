@@ -11,6 +11,8 @@
   overflow: hidden;
 }
 
+/* get the text in the cardtitle to fit inside the container still displaying all
+the text. */
 .card__title {
   max-width: 53px;
   margin: 0;
@@ -22,6 +24,7 @@
   line-height: 20px;
   font-size: 16px;
   padding: 2px 12px;
+  overflow: hidden;
 }
 
 .card__image {
