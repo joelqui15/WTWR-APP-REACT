@@ -64,9 +64,13 @@ function App() {
     openModal(modals.preview);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault;
-    setClothingItems([item, ...clothingItems]);
+  function handleAddSubmit(data) {
+    const inputValues = {
+      name: data.name,
+      image: data.link,
+      weather: data.weather,
+    };
+    setClothingItems([data, ...clothingItems]);
   }
 
   return (
@@ -96,6 +100,7 @@ function App() {
               />
               <Route
                 path="/profile"
+<<<<<<< HEAD
                 element={
                   <Profile
                     clothingItems={clothingItems}
@@ -104,6 +109,9 @@ function App() {
                     }}
                   />
                 }
+=======
+                element={<Profile clothingItems={clothingItems} />}
+>>>>>>> 9b035bc6f3bb14d23d842aba75027a9031a01ec3
               />
             </Routes>
 
@@ -126,6 +134,7 @@ function App() {
             title="New garment"
             buttonText="Add garment"
             onClose={closeModal}
+            onAddItem={handleAddSubmit}
           />
         </div>
       </CurrentTempContext.Provider>

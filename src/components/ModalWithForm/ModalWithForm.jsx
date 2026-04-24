@@ -1,7 +1,14 @@
 import "../ModalWithForm/ModalWithForm.css";
 import { useEffect } from "react";
 
-function ModalWithForm({ children, isOpen, onClose, title, buttonText }) {
+function ModalWithForm({
+  children,
+  isOpen,
+  onClose,
+  title,
+  buttonText,
+  onSubmit,
+}) {
   useEffect(() => {
     if (!isOpen) return;
     function handleEscape(e) {
@@ -28,7 +35,7 @@ function ModalWithForm({ children, isOpen, onClose, title, buttonText }) {
         className={isOpen ? "modal" : "modal__hidden"}
         onClick={handleCloseClick}
       >
-        <form name="form" className="modal__form">
+        <form name="form" className="modal__form" onSubmit={onSubmit}>
           <h2 className="modal__title">{title}</h2>
           <button
             type="button"
