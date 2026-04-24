@@ -70,7 +70,7 @@ function App() {
       image: data.link,
       weather: data.weather,
     };
-    setClothingItems([data, ...clothingItems]);
+    setClothingItems([inputValues, ...clothingItems]);
   }
 
   return (
@@ -100,18 +100,15 @@ function App() {
               />
               <Route
                 path="/profile"
-<<<<<<< HEAD
                 element={
                   <Profile
                     clothingItems={clothingItems}
                     openModal={() => {
                       openModal(modals.add);
                     }}
+                    handleCardClick={handleCardClick}
                   />
                 }
-=======
-                element={<Profile clothingItems={clothingItems} />}
->>>>>>> 9b035bc6f3bb14d23d842aba75027a9031a01ec3
               />
             </Routes>
 
