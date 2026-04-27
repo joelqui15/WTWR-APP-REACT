@@ -24,8 +24,13 @@ function Profile({ clothingItems, openModal, handleCardClick }) {
               return (
                 <ClothesSection
                   item={item}
+<<<<<<< HEAD
                   handleCardClick={handleCardClick}
                   key={item._id}
+=======
+                  key={item._id}
+                  handleCardClick={handleCardClick}
+>>>>>>> 605497a1c383e966737237852d72b77768c6574d
                 />
               );
             })}

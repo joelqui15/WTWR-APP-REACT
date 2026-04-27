@@ -26,6 +26,10 @@
 
 .profile__header {
   display: flex;
+<<<<<<< HEAD
+=======
+  padding-top: 14px;
+>>>>>>> 605497a1c383e966737237852d72b77768c6574d
   align-items: center;
   margin-bottom: 16px;
   padding-top: 13.5px;
