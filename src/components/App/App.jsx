@@ -66,10 +66,12 @@ function App() {
 
   function handleAddSubmit(data) {
     const inputValues = {
+      _id: data._id,
       name: data.name,
-      image: data.link,
+      link: data.link,
       weather: data.weather,
     };
+
     setClothingItems([inputValues, ...clothingItems]);
   }
 

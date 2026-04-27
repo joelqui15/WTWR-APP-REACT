@@ -2,15 +2,9 @@ import "../ClothesSection/ClothesSection.css";
 import ItemCard from "../../Main/ItemCard/ItemCard";
 
 function ClothesSection({ item, handleCardClick }) {
-<<<<<<< HEAD
-  return <ItemCard item={item} handleCardClick={handleCardClick} />;
-=======
   return (
-    <>
-      <ItemCard item={item} handleCardClick={handleCardClick} />
-    </>
+    <ItemCard item={item} handleCardClick={handleCardClick} key={item._id} />
   );
->>>>>>> 605497a1c383e966737237852d72b77768c6574d
 }
 
 export default ClothesSection;

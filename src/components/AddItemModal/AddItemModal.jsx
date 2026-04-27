@@ -3,8 +3,9 @@ import useForm from "../../hooks/useForm.js";
 
 function AddItemModal({ isOpen, onClose, onAddItem }) {
   const defaultValues = {
+    _id: crypto.randomUUID,
     name: "",
-    image: "",
+    link: "",
     weather: "",
   };
 
@@ -17,6 +18,7 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
   function handleAddSubmit(e) {
     e.preventDefault();
     onAddItem(values, handleReset());
+    onClose();
   }
   return (
     <>
@@ -50,11 +52,11 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
             <input
               id="url"
               type="url"
-              name="image"
+              name="link"
               className="form__input form__input-name"
               placeholder="Image URL"
               onChange={handleChange}
-              value={values.image}
+              value={values.link}
               required
             />
           </label>
