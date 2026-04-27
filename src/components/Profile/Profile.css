@@ -1,4 +1,4 @@
-/*align containers so that headers are alighned*/
+/*align containers so that headers are aligned*/
 
 .profile {
   display: flex;
@@ -26,9 +26,9 @@
 
 .profile__header {
   display: flex;
-
   align-items: center;
   margin-bottom: 16px;
+  padding-top: 13.5px;
 }
 
 .profile__add-btn {

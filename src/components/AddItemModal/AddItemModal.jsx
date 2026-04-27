@@ -2,14 +2,21 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import useForm from "../../hooks/useForm.js";
 
 function AddItemModal({ isOpen, onClose, onAddItem }) {
-  const { values, handleChange } = useForm({
+  const defaultValues = {
     name: "",
     image: "",
     weather: "",
-  });
+  };
+
+  const { values, handleChange, setValues } = useForm(defaultValues);
+
+  function handleReset() {
+    setValues(defaultValues);
+  }
+
   function handleAddSubmit(e) {
     e.preventDefault();
-    onAddItem(values);
+    onAddItem(values, handleReset());
   }
   return (
     <>
@@ -58,37 +65,37 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
           </legend>
           <label htmlFor="radio__hot" className=" form__label-radio">
             <input
-              value="hot"
               id="radio__hot"
               type="radio"
               name="weather"
               className="form__input form__input-radio"
               onChange={handleChange}
               value="hot"
+              checked={values.weather === "hot"}
             />
             <span className="radio__text">Hot</span>
           </label>
           <label htmlFor="radio__warm" className=" form__label-radio">
             <input
-              value="warm"
               id="radio__warm"
               type="radio"
               name="weather"
               className="form__input form__input-radio"
               onChange={handleChange}
               value="warm"
+              checked={values.weather === "warm"}
             />
             Warm
           </label>
           <label htmlFor="radio__cold" className=" form__label-radio">
             <input
-              value="cold"
               id="radio__cold"
               type="radio"
               name="weather"
               className="form__input form__input-radio"
               onChange={handleChange}
               value="cold"
+              checked={values.weather === "cold"}
             />
             Cold
           </label>
