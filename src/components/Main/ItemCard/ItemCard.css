@@ -1,4 +1,5 @@
 .card {
+  aspect-ratio: 1 / 1;
   max-width: 325px;
   width: 100%;
   list-style-type: none;
@@ -14,7 +15,7 @@
 /* get the text in the cardtitle to fit inside the container still displaying all
 the text. */
 .card__title {
-  max-width: 53px;
+  width: max-content;
   margin: 0;
   background-color: white;
   position: absolute;
@@ -25,10 +26,16 @@ the text. */
   font-size: 16px;
   padding: 2px 12px;
   overflow: hidden;
+
+  white-space: nowrap;
+  text-align: center;
 }
 
 .card__image {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 @media screen and (max-width: 768px) {

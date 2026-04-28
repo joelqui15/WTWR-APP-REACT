@@ -8,17 +8,18 @@ import ItemModal from "../ItemModal/ItemModal.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import Footer from "../Footer/Footer.jsx";
 import {
-  defaultClothingItems,
+  //defaultClothingItems,
   coordinates,
   ApiKey,
 } from "../../utils/constants.js";
 import { getWeatherData, filterWeatherData } from "../../utils/weatherApi.js";
+import { getClothingItems, addItem } from "../../utils/api.js";
 import { CurrentTempContext } from "../../context/CurrentTemperatureUnitContext.jsx";
 
 function App() {
   //state
 
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
@@ -35,6 +36,12 @@ function App() {
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
+      })
+      .catch(console.error);
+
+    getClothingItems()
+      .then((data) => {
+        setClothingItems(data);
       })
       .catch(console.error);
   }, []);
@@ -65,14 +72,18 @@ function App() {
   }
 
   function handleAddSubmit(data) {
-    const inputValues = {
-      _id: data._id,
+    const itemData = {
       name: data.name,
-      link: data.link,
+      imageUrl: data.imageUrl,
       weather: data.weather,
     };
 
-    setClothingItems([inputValues, ...clothingItems]);
+    addItem(itemData)
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]);
+        closeModal();
+      })
+      .catch(console.error);
   }
 
   return (

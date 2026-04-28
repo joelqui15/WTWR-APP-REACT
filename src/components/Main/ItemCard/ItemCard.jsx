@@ -5,7 +5,7 @@ function ItemCard({ item, handleCardClick }) {
     <li className="card">
       <p className="card__title">{item.name}</p>
       <img
-        src={item.link}
+        src={item.imageUrl}
         alt={item.name}
         onClick={() => {
           handleCardClick(item);
