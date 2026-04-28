@@ -61,12 +61,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sandals.png?etag=9bea85a77c0306586d2b71a33b626d41"
     },
     {
-      "_id": 10,
-      "name": "Scarf",
-      "weather": "cold",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Scarf.png?etag=74efbee93810c926b5507e862c6cb76c"
-    },
-    {
       "_id": 11,
       "name": "Shorts",
       "weather": "Hot",
@@ -101,12 +95,6 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
-    },
-    {
-      "name": "Designer Jacket",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSIWw0mHAqj_a7cXAp5qmKX07HokEQ4uDuWiZI1pQ8GN3SA-gKlBfN35axCnAywwE6gJsCmUdrn6UmGM-ggFoINm3f4UpDysrm8Hhkip_Z21KnfoMzlRAjINu4lD1-TQOT0_CcvWw&usqp=CAc",
-      "weather": "cold",
-      "_id": 17
     }
   ]
 }

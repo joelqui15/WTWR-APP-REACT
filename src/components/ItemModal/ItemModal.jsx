@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "../ItemModal/ItemModal.css";
 
-function ItemModal({ onClose, isOpen, card }) {
+function ItemModal({ onClose, isOpen, card, onDelete }) {
   useEffect(() => {
     if (!isOpen) return;
     function handleEscape(e) {
@@ -22,6 +22,10 @@ function ItemModal({ onClose, isOpen, card }) {
     }
   }
 
+  function handleDelete() {
+    onDelete(card._id);
+  }
+
   return (
     <div
       className={isOpen ? "modal" : "modal__hidden_type_preview"}
@@ -39,8 +43,19 @@ function ItemModal({ onClose, isOpen, card }) {
           className="modal__image_type_preview"
         />
         <div className="modal__footer">
-          <p className="modal__title_type_preview">{card.name}</p>
-          <p className="modal__weather_type_preview">Weather: {card.weather}</p>
+          <div className="modal__descriptions">
+            <p className="modal__title_type_preview">{card.name}</p>
+            <p className="modal__weather_type_preview">
+              Weather: {card.weather}
+            </p>
+          </div>
+          <button
+            type="button"
+            className="modal__delete-btn"
+            onClick={handleDelete}
+          >
+            Delete item
+          </button>
         </div>
       </div>
     </div>

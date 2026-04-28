@@ -13,7 +13,7 @@ import {
   ApiKey,
 } from "../../utils/constants.js";
 import { getWeatherData, filterWeatherData } from "../../utils/weatherApi.js";
-import { getClothingItems, addItem } from "../../utils/api.js";
+import { getClothingItems, addItem, removeItem } from "../../utils/api.js";
 import { CurrentTempContext } from "../../context/CurrentTemperatureUnitContext.jsx";
 
 function App() {
@@ -71,6 +71,21 @@ function App() {
     openModal(modals.preview);
   }
 
+  function handleItemDeletion(itemId) {
+    // created variable to handle filtering
+
+    removeItem(itemId)
+      .then(() => {
+        const filteredList = clothingItems.filter((item) => {
+          return item._id !== itemId;
+        });
+        setClothingItems(filteredList);
+        closeModal();
+      })
+      .catch(console.error);
+    //pass handler to itemModal
+  }
+
   function handleAddSubmit(data) {
     const itemData = {
       name: data.name,
@@ -79,6 +94,7 @@ function App() {
     };
 
     addItem(itemData)
+      //make new items appear first must reverse the array
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         closeModal();
@@ -132,6 +148,7 @@ function App() {
             onClose={closeModal}
             isOpen={activeModal === modals.preview}
             card={selectedCard}
+            onDelete={handleItemDeletion}
           />
           <AddItemModal
             isOpen={activeModal === modals.add}

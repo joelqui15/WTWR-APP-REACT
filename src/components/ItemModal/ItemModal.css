@@ -37,7 +37,9 @@
   cursor: pointer;
 }
 .modal__image_type_preview {
-  width: 100%;
+  max-width: 100%;
+  height: auto;
+
   object-fit: contain;
   border-radius: 20px 20px 0 0;
 }
@@ -46,6 +48,9 @@
   background-color: white;
   border-radius: 0 0 16px 16px;
   padding: 0 0 32px 32px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 }
 
 .modal__title_type_preview {
@@ -54,6 +59,21 @@
 
 .modal__weather_type_preview {
   margin: 0;
+}
+
+.modal__delete-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: red;
+  position: absolute;
+  top: 20px;
+  right: 34px;
+  cursor: pointer;
+}
+
+.modal__delete-btn:hover {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 380px) {

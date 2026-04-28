@@ -100,6 +100,10 @@
   accent-color: black;
 }
 
+.form__input-radio:checked {
+  accent-color: black;
+}
+
 .modal__submit-btn {
   max-width: 130px;
   padding: 8px 16px;
