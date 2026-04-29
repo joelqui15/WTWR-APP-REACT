@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "../ItemModal/ItemModal.css";
 
-function ItemModal({ onClose, isOpen, card, onDelete }) {
+function ItemModal({ onClose, isOpen, card, openModal }) {
   useEffect(() => {
     if (!isOpen) return;
     function handleEscape(e) {
@@ -52,7 +52,7 @@ function ItemModal({ onClose, isOpen, card, onDelete }) {
           <button
             type="button"
             className="modal__delete-btn"
-            onClick={handleDelete}
+            onClick={openModal}
           >
             Delete item
           </button>

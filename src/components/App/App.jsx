@@ -5,6 +5,7 @@ import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import Profile from "../Profile/Profile.jsx";
 import ItemModal from "../ItemModal/ItemModal.jsx";
+import DeleteModal from "../DeleteModal/DeleteModal.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import Footer from "../Footer/Footer.jsx";
 import {
@@ -50,6 +51,7 @@ function App() {
   const modals = {
     add: "add-garment",
     preview: "preview-card",
+    delete: "delete",
   };
 
   function handleToggleSwitch() {
@@ -148,7 +150,15 @@ function App() {
             onClose={closeModal}
             isOpen={activeModal === modals.preview}
             card={selectedCard}
+            openModal={() => {
+              openModal(modals.delete);
+            }}
+          />
+          <DeleteModal
+            isOpen={activeModal === modals.delete}
+            onClose={closeModal}
             onDelete={handleItemDeletion}
+            card={selectedCard}
           />
           <AddItemModal
             isOpen={activeModal === modals.add}
