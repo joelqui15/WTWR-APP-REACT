@@ -41,6 +41,7 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
             onChange={handleChange}
             value={values.name}
             required
+            minLength={2}
           />
         </label>
         <label htmlFor="url" className="form__label form__label-image">
