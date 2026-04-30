@@ -83,7 +83,7 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
             value="warm"
             checked={values.weather === "warm"}
           />
-          Warm
+          <span className="radio__text">Warm</span>
         </label>
         <label htmlFor="radio__cold" className=" form__label-radio">
           <input
@@ -95,7 +95,7 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
             value="cold"
             checked={values.weather === "cold"}
           />
-          Cold
+          <span className="radio__text">Cold</span>
         </label>
       </fieldset>
     </ModalWithForm>
