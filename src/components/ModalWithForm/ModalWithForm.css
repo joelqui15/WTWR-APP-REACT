@@ -68,6 +68,11 @@
   max-width: 440px;
 }
 
+.form__error-msg {
+  color: red;
+  font-size: 14px;
+}
+
 .form__label {
   display: flex;
   flex-direction: column;

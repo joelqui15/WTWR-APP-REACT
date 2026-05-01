@@ -8,10 +8,28 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
     weather: "",
   };
 
-  const { values, handleChange, setValues } = useForm(defaultValues);
+  // custom validation
+  const errorData = {
+    name: {
+      required: true,
+      minLength: 2,
+      message: "Please enter 2 characters or more...",
+    },
+    imageUrl: {
+      required: true,
+      pattern: /^https?:\/\/.+/,
+      message: "Enter a valid URL...",
+    },
+  };
+
+  const { values, handleChange, setValues, errors, setErrors } = useForm(
+    defaultValues,
+    errorData,
+  );
 
   function handleReset() {
     setValues(defaultValues);
+    setErrors({});
   }
 
   function handleAddSubmit(e) {
@@ -40,9 +58,14 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
             placeholder="Name"
             onChange={handleChange}
             value={values.name}
-            required
-            minLength={2}
           />
+          {errors.name && (
+            <span
+              className={`form__error-msg ${errors.name ? "form__error-msg_visible" : "form__error-msg_hidden"}`}
+            >
+              {errors.name}
+            </span>
+          )}
         </label>
         <label htmlFor="url" className="form__label form__label-image">
           Image
@@ -55,8 +78,14 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
             placeholder="Image URL"
             onChange={handleChange}
             value={values.imageUrl}
-            required
           />
+          {errors.imageUrl && (
+            <span
+              className={`form__error-msg ${errors.imageUrl ? "form__error-msg_visible" : "form__error-msg_hidden"} `}
+            >
+              {errors.imageUrl}
+            </span>
+          )}
         </label>
       </fieldset>
       <fieldset className=" form__fieldset form__fieldset-radio">
