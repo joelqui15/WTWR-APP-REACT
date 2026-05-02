@@ -74,8 +74,6 @@ function App() {
   }
 
   function handleItemDeletion(itemId) {
-    // created variable to handle filtering
-
     removeItem(itemId)
       .then(() => {
         const filteredList = clothingItems.filter((item) => {
@@ -96,7 +94,6 @@ function App() {
     };
 
     addItem(itemData)
-      //make new items appear first must reverse the array
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         closeModal();

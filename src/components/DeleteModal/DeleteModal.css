@@ -3,7 +3,7 @@
 }
 
 .modal__delete-hidden {
-  visibility: hidden;
+  display: none;
 }
 
 .modal__delete-content {

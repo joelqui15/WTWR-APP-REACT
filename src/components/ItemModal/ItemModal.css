@@ -3,7 +3,7 @@
 }
 
 .modal__hidden_type_preview {
-  visibility: hidden;
+  display: none;
 }
 
 .modal__preview {

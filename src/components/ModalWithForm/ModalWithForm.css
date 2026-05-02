@@ -12,7 +12,7 @@
   z-index: 1;
 }
 .modal__hidden {
-  visibility: hidden;
+  display: none;
 }
 
 .modal__form {
