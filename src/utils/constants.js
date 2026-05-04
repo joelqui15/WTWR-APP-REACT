@@ -78,6 +78,6 @@ const coordinates = {
   lon: -149.9003,
 };
 
-const ApiKey = "76464173999be743bc21ef4d033211ba";
+const apiKey = "76464173999be743bc21ef4d033211ba";
 
-export { coordinates, ApiKey, weatherDataOptions, weatherOptionsDefault };
+export { coordinates, apiKey, weatherDataOptions, weatherOptionsDefault };

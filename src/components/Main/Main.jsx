@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { CurrentTempContext } from "../../context/CurrentTemperatureUnitContext.jsx";
+import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext.jsx";
 import WeatherCard from "../Main/WeatherCard/WeatherCard.jsx";
 import ItemCard from "../Main/ItemCard/ItemCard.jsx";
 import "./Main.css";
 
 function Main({ clothingItems, weatherData, handleCardClick }) {
-  const { currentTemperatureUnit } = useContext(CurrentTempContext);
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   const handleTempUnit = () => {
     if (currentTemperatureUnit === "C") {

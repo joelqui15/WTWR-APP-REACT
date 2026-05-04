@@ -3,7 +3,7 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-function handleServerResponse(res) {
+export function handleServerResponse(res) {
   if (res.ok) {
     return res.json();
   } else {

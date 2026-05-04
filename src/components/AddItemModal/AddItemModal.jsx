@@ -1,7 +1,14 @@
+import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import useForm from "../../hooks/useForm.js";
 
 function AddItemModal({ isOpen, onClose, onAddItem }) {
+  useEffect(() => {
+    if (!isOpen) {
+      handleReset();
+    }
+  }, [isOpen]);
+
   const defaultValues = {
     name: "",
     imageUrl: "",
@@ -34,7 +41,7 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
 
   function handleAddSubmit(e) {
     e.preventDefault();
-    onAddItem(values, handleReset());
+    onAddItem(values);
   }
   return (
     <ModalWithForm
@@ -58,6 +65,7 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
             placeholder="Name"
             onChange={handleChange}
             value={values.name}
+            required
           />
           {errors.name && (
             <span
@@ -78,6 +86,7 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
             placeholder="Image URL"
             onChange={handleChange}
             value={values.imageUrl}
+            required
           />
           {errors.imageUrl && (
             <span
@@ -99,6 +108,7 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
             onChange={handleChange}
             value="hot"
             checked={values.weather === "hot"}
+            required
           />
           <span className="radio__text">Hot</span>
         </label>
@@ -111,6 +121,7 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
             onChange={handleChange}
             value="warm"
             checked={values.weather === "warm"}
+            required
           />
           <span className="radio__text">Warm</span>
         </label>
@@ -123,6 +134,7 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
             onChange={handleChange}
             value="cold"
             checked={values.weather === "cold"}
+            required
           />
           <span className="radio__text">Cold</span>
         </label>

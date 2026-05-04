@@ -2,12 +2,10 @@ import "../Footer/Footer.css";
 
 function Footer() {
   return (
-    <>
-      <footer className="footer">
-        <p className="footer__name">&copy; Developed by Joel Quinones</p>
-        <p className="footer__year">2026</p>
-      </footer>
-    </>
+    <footer className="footer">
+      <p className="footer__name">&copy; Developed by Joel Quinones</p>
+      <p className="footer__year">2026</p>
+    </footer>
   );
 }
 

@@ -11,11 +11,11 @@ import Footer from "../Footer/Footer.jsx";
 import {
   //defaultClothingItems,
   coordinates,
-  ApiKey,
+  apiKey,
 } from "../../utils/constants.js";
 import { getWeatherData, filterWeatherData } from "../../utils/weatherApi.js";
 import { getClothingItems, addItem, removeItem } from "../../utils/api.js";
-import { CurrentTempContext } from "../../context/CurrentTemperatureUnitContext.jsx";
+import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext.jsx";
 
 function App() {
   //state
@@ -33,7 +33,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   useEffect(() => {
-    getWeatherData(coordinates, ApiKey)
+    getWeatherData(coordinates, apiKey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
@@ -103,7 +103,7 @@ function App() {
 
   return (
     <>
-      <CurrentTempContext.Provider
+      <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitch }}
       >
         <div className="page">
@@ -165,7 +165,7 @@ function App() {
             onAddItem={handleAddSubmit}
           />
         </div>
-      </CurrentTempContext.Provider>
+      </CurrentTemperatureUnitContext.Provider>
     </>
   );
 }

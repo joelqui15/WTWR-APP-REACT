@@ -12,30 +12,28 @@ function Header({ openModal, weatherData }) {
   });
 
   return (
-    <>
-      <header className="header">
-        <Link to="/">
-          <img className="header__logo" src={Logo} alt="WTWR LOGO" />
+    <header className="header">
+      <Link to="/">
+        <img className="header__logo" src={Logo} alt="WTWR LOGO" />
+      </Link>
+      <p className="header__date-location">
+        {currentDate}, {weatherData.city}
+      </p>
+      <ToggleSwitch />
+      <button className="header__add-btn" onClick={openModal}>
+        + Add clothes
+      </button>
+      <div className="header__avatar-section">
+        <p className="header__avatar-name">Joel Quinones</p>
+        <Link to="/profile">
+          <img
+            src={AvatarPic}
+            alt="user avatar photo"
+            className="header__avatar-pic"
+          />
         </Link>
-        <p className="header__date-location">
-          {currentDate}, {weatherData.city}
-        </p>
-        <ToggleSwitch />
-        <button className="header__add-btn" onClick={openModal}>
-          + Add clothes
-        </button>
-        <div className="header__avatar-section">
-          <p className="header__avatar-name">Joel Quinones</p>
-          <Link to="/profile">
-            <img
-              src={AvatarPic}
-              alt="user avatar photo"
-              className="header__avatar-pic"
-            />
-          </Link>
-        </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 }
 

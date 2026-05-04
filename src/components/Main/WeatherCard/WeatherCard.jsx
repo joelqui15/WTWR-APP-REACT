@@ -21,18 +21,16 @@ function WeatherCard({ weatherData, handleTempUnit, currentTemperatureUnit }) {
   }
 
   return (
-    <>
-      <section className="weatherCard__container">
-        <img
-          className="weatherCard__img"
-          src={weatherOptions?.url}
-          alt={`displaying ${weatherOptions?.condition} at ${weatherOptions?.isDay ? "day" : "night"}`}
-        />
-        <p className="weatherCard__temp">
-          {handleTempUnit()}&deg;{currentTemperatureUnit}
-        </p>
-      </section>
-    </>
+    <section className="weatherCard__container">
+      <img
+        className="weatherCard__img"
+        src={weatherOptions?.url}
+        alt={`displaying ${weatherOptions?.condition} at ${weatherOptions?.isDay ? "day" : "night"}`}
+      />
+      <p className="weatherCard__temp">
+        {handleTempUnit()}&deg;{currentTemperatureUnit}
+      </p>
+    </section>
   );
 }
 
