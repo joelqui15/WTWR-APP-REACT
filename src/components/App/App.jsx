@@ -15,7 +15,7 @@ import {
 } from "../../utils/constants.js";
 import { getWeatherData, filterWeatherData } from "../../utils/weatherApi.js";
 import { getClothingItems, addItem, removeItem } from "../../utils/api.js";
-import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext.jsx";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.jsx";
 
 function App() {
   //state
@@ -28,7 +28,7 @@ function App() {
     condition: "",
     isDay: false,
   });
-  const [activeModal, setAcvtiveModal] = useState("");
+  const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
@@ -61,11 +61,11 @@ function App() {
   }
 
   function openModal(modalName) {
-    setAcvtiveModal(modalName);
+    setActiveModal(modalName);
   }
 
   function closeModal() {
-    setAcvtiveModal("");
+    setActiveModal("");
   }
 
   function handleCardClick(card) {
@@ -150,6 +150,7 @@ function App() {
             openModal={() => {
               openModal(modals.delete);
             }}
+            onDelete={handleItemDeletion}
           />
           <DeleteModal
             isOpen={activeModal === modals.delete}

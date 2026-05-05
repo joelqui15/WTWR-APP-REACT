@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "../ItemModal/ItemModal.css";
 
-function ItemModal({ onClose, isOpen, card, openModal }) {
+function ItemModal({ onClose, isOpen, card, openModal, onDelete }) {
   useEffect(() => {
     if (!isOpen) return;
     function handleEscape(e) {
