@@ -49,7 +49,11 @@ function ModalWithForm({
             {buttonText}
           </button>
           {secondaryButtonText && (
-            <button type="button" className="modal__secondary-btn">
+            <button
+              type="button"
+              className="modal__secondary-btn"
+              onClick={onSecondaryButtonClick}
+            >
               {secondaryButtonText}
             </button>
           )}

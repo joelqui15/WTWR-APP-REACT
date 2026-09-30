@@ -27,7 +27,7 @@ function Header({
       <div className="header__actions">
         <ToggleSwitch />
 
-        {!isLoggedIn ? (
+        {isLoggedIn === true ? (
           <>
             <button className="header__add-btn" onClick={openAddModal}>
               + Add clothes

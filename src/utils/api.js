@@ -1,5 +1,5 @@
-const baseUrl = "http://localhost:3001";
-const headers = {
+export const baseUrl = "http://localhost:3001";
+export const headers = {
   "Content-Type": "application/json",
 };
 

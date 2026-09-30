@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import useForm from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function LoginModal({ isOpen, onClose }) {
+function LoginModal({ isOpen, onClose, onSecondaryButtonClick }) {
   useEffect(() => {
     if (!isOpen) {
       handleReset();
@@ -43,6 +43,7 @@ function LoginModal({ isOpen, onClose }) {
       title="Log In"
       buttonText="Log In"
       secondaryButtonText="or Sign up"
+      onSecondaryButtonClick={onSecondaryButtonClick}
     >
       <fieldset className=" form__fieldset form__fieldset-info">
         <label htmlFor="email" className="form__label form__label-email">

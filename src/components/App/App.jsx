@@ -18,6 +18,7 @@ import {
 import { getWeatherData, filterWeatherData } from "../../utils/weatherApi.js";
 import { getClothingItems, addItem, removeItem } from "../../utils/api.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.jsx";
+import * as auth from "../../utils/auth.js";
 
 function App() {
   //state
@@ -33,7 +34,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     getWeatherData(coordinates, apiKey)
@@ -104,6 +105,33 @@ function App() {
         closeModal();
       })
       .catch(console.error);
+  }
+
+  function handleRegistration({ name, avatar, email, password }) {
+    return auth
+      .register(name, avatar, email, password)
+      .then(() => {
+        closeModal();
+        handleLogin(email, password);
+      })
+      .catch((err) => {
+        console.err(err);
+      });
+  }
+
+  function handleLogin({ email, password }) {
+    return auth
+      .login(email, password)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("jwt", res.token);
+          setIsLoggedIn(true);
+          closeModal();
+        }
+      })
+      .catch((err) => {
+        console.err(err);
+      });
   }
 
   return (
@@ -180,10 +208,16 @@ function App() {
           <RegistrationModal
             isOpen={activeModal === modals.register}
             onClose={closeModal}
+            onSecondaryButtonClick={() => {
+              openModal(modals.login);
+            }}
           />
           <LoginModal
             isOpen={activeModal === modals.login}
             onClose={closeModal}
+            onSecondaryButtonClick={() => {
+              openModal(modals.register);
+            }}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>
