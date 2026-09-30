@@ -1,11 +1,16 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import Logo from "../../images/Logo.svg";
 import AvatarPic from "../../images/user-avatar.png";
 import ToggleSwitch from "./ToggleSwitch/ToggleSwitch";
 
-function Header({ openModal, weatherData }) {
+function Header({
+  openAddModal,
+  openRegisterModal,
+  openLoginModal,
+  weatherData,
+  isLoggedIn,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -19,19 +24,37 @@ function Header({ openModal, weatherData }) {
       <p className="header__date-location">
         {currentDate}, {weatherData.city}
       </p>
-      <ToggleSwitch />
-      <button className="header__add-btn" onClick={openModal}>
-        + Add clothes
-      </button>
-      <div className="header__avatar-section">
-        <p className="header__avatar-name">Joel Quinones</p>
-        <Link to="/profile">
-          <img
-            src={AvatarPic}
-            alt="user avatar photo"
-            className="header__avatar-pic"
-          />
-        </Link>
+      <div className="header__actions">
+        <ToggleSwitch />
+
+        {!isLoggedIn ? (
+          <>
+            <button className="header__add-btn" onClick={openAddModal}>
+              + Add clothes
+            </button>
+
+            <div className="header__avatar-section">
+              <p className="header__avatar-name">Joel Quinones</p>
+
+              <Link to="/profile">
+                <img
+                  src={AvatarPic}
+                  alt="User avatar"
+                  className="header__avatar-pic"
+                />
+              </Link>
+            </div>
+          </>
+        ) : (
+          <div className="header__login-signup">
+            <button className="header__sign-btn" onClick={openRegisterModal}>
+              Sign Up
+            </button>
+            <button className="header__login-btn" onClick={openLoginModal}>
+              Log In
+            </button>
+          </div>
+        )}
       </div>
     </header>
   );

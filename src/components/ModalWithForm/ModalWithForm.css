@@ -65,7 +65,26 @@
 }
 
 .form__input {
+  width: 100%;
   max-width: 440px;
+
+  border: none;
+  border-bottom: 1px solid #000;
+
+  background: transparent;
+  outline: none;
+
+  padding: 0 0 4px;
+
+  font: inherit;
+}
+
+.form__input:placeholder-shown {
+  border-bottom-color: rgba(0, 0, 0, 0.3);
+}
+
+.form__input:not(:placeholder-shown) {
+  border-bottom-color: #000;
 }
 
 .form__error-msg {
@@ -116,9 +135,39 @@
 input:checked ~ .radio__text {
   color: black;
 }
+.modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+
 .modal__submit-btn {
-  max-width: 130px;
+  width: fit-content;
   padding: 8px 16px;
-  margin: 32px 0 0 0;
+  margin: 0;
+  border: none;
+  border-radius: 4px;
+  background-color: #000;
+  color: #fff;
+  font-family: inherit;
   font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.modal__form:invalid .modal__submit-btn {
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: default;
+}
+
+.modal__secondary-btn {
+  border: none;
+  color: rgba(0, 0, 0, 0.3);
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
 }

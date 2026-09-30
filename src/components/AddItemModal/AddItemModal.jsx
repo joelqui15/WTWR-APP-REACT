@@ -61,6 +61,7 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
             id="name"
             type="text"
             name="name"
+            minLength={2}
             className="form__input form__input-name"
             placeholder="Name"
             onChange={handleChange}

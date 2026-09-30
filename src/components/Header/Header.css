@@ -1,49 +1,88 @@
 .header {
   font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-style: Bold;
   font-size: 20px;
-
   line-height: 24px;
-  letter-spacing: 0%;
+
   max-width: 1360px;
   display: flex;
-  background-color: #f3f3f3;
-  padding: 32px 0px 28px;
-  justify-content: center;
   align-items: center;
-  position: relative;
+
+  background-color: #f3f3f3;
+
+  padding: 32px 0 28px;
 }
-.header__add-btn {
+
+.header__actions {
   margin-left: auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.header__logo {
+  display: block;
+  max-width: 89px;
+  margin-right: 24px;
+}
+
+.header__date-location {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.header__add-btn {
   background-color: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
+
+  font: inherit;
+  white-space: nowrap;
 }
 
 .header__add-btn:hover {
   border-bottom: 1px solid black;
 }
 
-.header__logo {
-  margin: 0 24px 0 0;
-  max-width: 89px;
-}
-.header__date-location {
-  margin: 0;
-}
-
 .header__avatar-section {
   display: flex;
-  justify-content: center;
   align-items: center;
+
   gap: 12px;
 }
 
 .header__avatar-name {
-  margin: 0 0 0 20px;
+  margin: 0;
   white-space: nowrap;
+}
+
+.header__avatar-pic {
+  display: block;
+}
+
+.header__login-signup {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__login-btn,
+.header__sign-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+
+  cursor: pointer;
+  font: inherit;
+  white-space: nowrap;
+}
+
+.header__login-btn:hover,
+.header__sign-btn:hover {
+  border-bottom: 1px solid black;
 }
 
 @media screen and (max-width: 768px) {
@@ -52,6 +91,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+
     padding: 0;
     margin-bottom: 16px;
   }
@@ -61,14 +101,12 @@
     margin-bottom: 32px;
   }
 
-  .header__avatar-name {
-    display: none;
+  .header__actions {
+    margin-left: 0;
   }
 
-  .header__add-btn {
-    display: none;
-  }
-
+  .header__avatar-name,
+  .header__add-btn,
   .header__avatar-pic {
     display: none;
   }

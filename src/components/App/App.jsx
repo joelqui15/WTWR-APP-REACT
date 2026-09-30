@@ -7,6 +7,8 @@ import Profile from "../Profile/Profile.jsx";
 import ItemModal from "../ItemModal/ItemModal.jsx";
 import DeleteModal from "../DeleteModal/DeleteModal.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
+import RegistrationModal from "../RegistrationModal/RegistrationModal.jsx";
+import LoginModal from "../LoginModal/LoginModal.jsx";
 import Footer from "../Footer/Footer.jsx";
 import {
   //defaultClothingItems,
@@ -31,6 +33,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     getWeatherData(coordinates, apiKey)
@@ -52,6 +55,8 @@ function App() {
     add: "add-garment",
     preview: "preview-card",
     delete: "delete",
+    register: "register",
+    login: "login",
   };
 
   function handleToggleSwitch() {
@@ -110,8 +115,15 @@ function App() {
           <div className="page__content">
             <Header
               weatherData={weatherData}
-              openModal={() => {
+              isLoggedIn={isLoggedIn}
+              openAddModal={() => {
                 openModal(modals.add);
+              }}
+              openRegisterModal={() => {
+                openModal(modals.register);
+              }}
+              openLoginModal={() => {
+                openModal(modals.login);
               }}
             />
             <Routes>
@@ -164,6 +176,14 @@ function App() {
             buttonText="Add garment"
             onClose={closeModal}
             onAddItem={handleAddSubmit}
+          />
+          <RegistrationModal
+            isOpen={activeModal === modals.register}
+            onClose={closeModal}
+          />
+          <LoginModal
+            isOpen={activeModal === modals.login}
+            onClose={closeModal}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>
