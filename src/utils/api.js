@@ -17,19 +17,25 @@ export function getClothingItems() {
   });
 }
 
-export function addItem({ name, imageUrl, weather }) {
+export function addItem({ name, imageUrl, weather }, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers,
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
     body: JSON.stringify({ name, imageUrl, weather }),
   }).then((res) => {
     return handleServerResponse(res);
   });
 }
 
-export function removeItem(itemId) {
+export function removeItem(itemId, token) {
   return fetch(`${baseUrl}/items/${itemId}`, {
     method: "DELETE",
-    headers: headers,
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
   }).then((res) => handleServerResponse(res));
 }
