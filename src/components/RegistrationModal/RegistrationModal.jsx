@@ -2,7 +2,12 @@ import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import useForm from "../../hooks/useForm.js";
 
-function RegistrationModal({ isOpen, onClose, onSecondaryButtonClick }) {
+function RegistrationModal({
+  isOpen,
+  onClose,
+  onSecondaryButtonClick,
+  onRegistration,
+}) {
   useEffect(() => {
     if (!isOpen) {
       handleReset();
@@ -50,6 +55,11 @@ function RegistrationModal({ isOpen, onClose, onSecondaryButtonClick }) {
     setErrors({});
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    onRegistration(values);
+  }
+
   return (
     <ModalWithForm
       isOpen={isOpen}
@@ -58,6 +68,7 @@ function RegistrationModal({ isOpen, onClose, onSecondaryButtonClick }) {
       buttonText="Sign Up"
       secondaryButtonText="or Log in"
       onSecondaryButtonClick={onSecondaryButtonClick}
+      onSubmit={handleSubmit}
     >
       <fieldset className=" form__fieldset form__fieldset-info">
         <label htmlFor="email" className="form__label form__label-email">

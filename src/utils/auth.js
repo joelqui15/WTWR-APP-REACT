@@ -21,3 +21,15 @@ export const login = (email, password) => {
     return handleServerResponse(res);
   });
 };
+
+export const checkToken = (token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
+  }).then((res) => {
+    return handleServerResponse(res);
+  });
+};

@@ -9,6 +9,7 @@ import DeleteModal from "../DeleteModal/DeleteModal.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import RegistrationModal from "../RegistrationModal/RegistrationModal.jsx";
 import LoginModal from "../LoginModal/LoginModal.jsx";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import Footer from "../Footer/Footer.jsx";
 import {
   //defaultClothingItems,
@@ -112,10 +113,10 @@ function App() {
       .register(name, avatar, email, password)
       .then(() => {
         closeModal();
-        handleLogin(email, password);
+        handleLogin({ email, password });
       })
       .catch((err) => {
-        console.err(err);
+        console.error(err);
       });
   }
 
@@ -130,9 +131,26 @@ function App() {
         }
       })
       .catch((err) => {
-        console.err(err);
+        console.error(err);
       });
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+
+    if (!token) {
+      return;
+    }
+    auth
+      .checkToken(token)
+
+      .then(() => {
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <>
@@ -169,13 +187,15 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <Profile
-                    clothingItems={clothingItems}
-                    openModal={() => {
-                      openModal(modals.add);
-                    }}
-                    handleCardClick={handleCardClick}
-                  />
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Profile
+                      clothingItems={clothingItems}
+                      openModal={() => {
+                        openModal(modals.add);
+                      }}
+                      handleCardClick={handleCardClick}
+                    />
+                  </ProtectedRoute>
                 }
               />
             </Routes>
@@ -211,6 +231,7 @@ function App() {
             onSecondaryButtonClick={() => {
               openModal(modals.login);
             }}
+            onRegistration={handleRegistration}
           />
           <LoginModal
             isOpen={activeModal === modals.login}
@@ -218,6 +239,7 @@ function App() {
             onSecondaryButtonClick={() => {
               openModal(modals.register);
             }}
+            onLogin={handleLogin}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>
