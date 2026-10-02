@@ -39,3 +39,17 @@ export function removeItem(itemId, token) {
     },
   }).then((res) => handleServerResponse(res));
 }
+
+export function editUser({ name, avatar }, token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      avatar,
+    }),
+  }).then((res) => handleServerResponse(res));
+}

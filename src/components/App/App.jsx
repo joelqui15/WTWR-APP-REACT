@@ -9,6 +9,7 @@ import DeleteModal from "../DeleteModal/DeleteModal.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import RegistrationModal from "../RegistrationModal/RegistrationModal.jsx";
 import LoginModal from "../LoginModal/LoginModal.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import Footer from "../Footer/Footer.jsx";
 import {
@@ -17,7 +18,12 @@ import {
   apiKey,
 } from "../../utils/constants.js";
 import { getWeatherData, filterWeatherData } from "../../utils/weatherApi.js";
-import { getClothingItems, addItem, removeItem } from "../../utils/api.js";
+import {
+  getClothingItems,
+  addItem,
+  removeItem,
+  editUser,
+} from "../../utils/api.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 import * as auth from "../../utils/auth.js";
@@ -61,6 +67,7 @@ function App() {
     delete: "delete",
     register: "register",
     login: "login",
+    edit: "edit",
   };
 
   function handleToggleSwitch() {
@@ -129,9 +136,26 @@ function App() {
       .then((res) => {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
-          setIsLoggedIn(true);
-          closeModal();
+
+          return auth.getUserAndCheckToken(res.token);
         }
+      })
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+        closeModal();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  function handleEditProfile(profileData) {
+    const token = localStorage.getItem("jwt");
+    editUser(profileData, token)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeModal();
       })
       .catch((err) => {
         console.error(err);
@@ -145,10 +169,11 @@ function App() {
       return;
     }
     auth
-      .checkToken(token)
+      .getUserAndCheckToken(token)
 
-      .then(() => {
+      .then((userData) => {
         setIsLoggedIn(true);
+        setCurrentUser(userData);
       })
       .catch((err) => {
         console.error(err);
@@ -197,6 +222,9 @@ function App() {
                         openModal={() => {
                           openModal(modals.add);
                         }}
+                        openEditModal={() => {
+                          openModal(modals.edit);
+                        }}
                         handleCardClick={handleCardClick}
                       />
                     </ProtectedRoute>
@@ -244,6 +272,11 @@ function App() {
                 openModal(modals.register);
               }}
               onLogin={handleLogin}
+            />
+            <EditProfileModal
+              isOpen={activeModal === modals.edit}
+              onClose={closeModal}
+              onEdit={handleEditProfile}
             />
           </div>
         </CurrentTemperatureUnitContext.Provider>

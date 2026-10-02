@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import "../Profile/Profile.css";
 import ClothesSection from "./ClothesSection/ClothesSection";
 import SideBar from "./SideBar/SideBar.jsx";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 
-function Profile({ clothingItems, openModal, handleCardClick }) {
+function Profile({ clothingItems, openModal, handleCardClick, openEditModal }) {
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <section className="profile">
-      <SideBar />
+      <SideBar openEditModal={openEditModal} />
 
       <div className="profile__content">
         <div className="profile__header">
@@ -19,15 +23,20 @@ function Profile({ clothingItems, openModal, handleCardClick }) {
           </button>
         </div>
         <ul className="profile__cards-list">
-          {clothingItems.map((item) => {
-            return (
-              <ClothesSection
-                item={item}
-                handleCardClick={handleCardClick}
-                key={item._id}
-              />
-            );
-          })}
+          {clothingItems
+            .filter((item) => {
+              return item.owner === currentUser._id;
+            })
+            .map((item) => {
+              return (
+                <ClothesSection
+                  item={item}
+                  handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                  key={item._id}
+                />
+              );
+            })}
         </ul>
       </div>
     </section>

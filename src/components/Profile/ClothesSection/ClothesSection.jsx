@@ -1,4 +1,3 @@
-import "../ClothesSection/ClothesSection.css";
 import ItemCard from "../../Main/ItemCard/ItemCard";
 
 function ClothesSection({ item, handleCardClick }) {

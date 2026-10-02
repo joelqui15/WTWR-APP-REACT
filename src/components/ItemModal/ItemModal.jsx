@@ -1,7 +1,9 @@
 import { useEffect } from "react";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "../ItemModal/ItemModal.css";
 
-function ItemModal({ onClose, isOpen, card, openModal, onDelete }) {
+function ItemModal({ onClose, isOpen, card, openModal }) {
   useEffect(() => {
     if (!isOpen) return;
     function handleEscape(e) {
@@ -22,9 +24,10 @@ function ItemModal({ onClose, isOpen, card, openModal, onDelete }) {
     }
   }
 
-  function handleDelete() {
-    onDelete(card._id);
-  }
+  const currentUser = useContext(CurrentUserContext);
+  const isOwn = card.owner === currentUser._id;
+
+  const itemDeleteButtonClassName = `modal__delete-button ${isOwn ? "" : "modal__delete-button_hidden"}`;
 
   return (
     <div
@@ -51,7 +54,7 @@ function ItemModal({ onClose, isOpen, card, openModal, onDelete }) {
           </div>
           <button
             type="button"
-            className="modal__delete-btn"
+            className={itemDeleteButtonClassName}
             onClick={openModal}
           >
             Delete item

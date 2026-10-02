@@ -38,10 +38,10 @@
   background-color: transparent;
 }
 .modal__image_type_preview {
-  max-width: 100%;
+  max-width: 498px;
   height: 498px;
 
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 20px 20px 0 0;
 }
 
@@ -62,7 +62,7 @@
   margin: 0;
 }
 
-.modal__delete-btn {
+.modal__delete-button {
   background-color: transparent;
   border: none;
   padding: 0;
@@ -73,7 +73,11 @@
   cursor: pointer;
 }
 
-.modal__delete-btn:hover {
+.modal__delete-button_hidden {
+  display: none;
+}
+
+.modal__delete-button:hover {
   text-decoration: underline;
 }
 

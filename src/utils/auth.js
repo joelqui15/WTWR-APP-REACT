@@ -22,7 +22,7 @@ export const login = (email, password) => {
   });
 };
 
-export const checkToken = (token) => {
+export const getUserAndCheckToken = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {

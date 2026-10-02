@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 import "./Header.css";
 import Logo from "../../images/Logo.svg";
-import AvatarPic from "../../images/user-avatar.png";
+
 import ToggleSwitch from "./ToggleSwitch/ToggleSwitch";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Header({
   openAddModal,
@@ -11,6 +13,8 @@ function Header({
   weatherData,
   isLoggedIn,
 }) {
+  const { name, avatar } = useContext(CurrentUserContext);
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -34,15 +38,24 @@ function Header({
             </button>
 
             <div className="header__avatar-section">
-              <p className="header__avatar-name">Joel Quinones</p>
-
-              <Link to="/profile">
-                <img
-                  src={AvatarPic}
-                  alt="User avatar"
-                  className="header__avatar-pic"
-                />
-              </Link>
+              <p className="header__avatar-name">{name}</p>
+              {avatar ? (
+                <>
+                  <Link to="/profile">
+                    <img
+                      src={avatar}
+                      alt="User avatar"
+                      className="header__avatar-pic"
+                    />
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <div className="header__avatar-placeholder">
+                    {name?.charAt(0).toUpperCase()}
+                  </div>
+                </>
+              )}
             </div>
           </>
         ) : (
