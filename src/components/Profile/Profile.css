@@ -13,6 +13,10 @@
   font-size: 20px;
   line-height: 100%;
 }
+.profile__content {
+  flex: 1;
+  margin-left: 116px;
+}
 
 .profile__cards-list {
   display: grid;

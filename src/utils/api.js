@@ -53,3 +53,23 @@ export function editUser({ name, avatar }, token) {
     }),
   }).then((res) => handleServerResponse(res));
 }
+
+export function addCardLike(itemId, token) {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
+  }).then((res) => handleServerResponse(res));
+}
+
+export function removeCardLike(itemId, token) {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
+  }).then((res) => handleServerResponse(res));
+}

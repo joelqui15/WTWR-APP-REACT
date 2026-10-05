@@ -12,14 +12,46 @@
   overflow: hidden;
 }
 
+.card__header {
+  position: absolute;
+  top: 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card__like-btn {
+  width: 20px;
+  height: 20px;
+
+  padding: 0;
+  border: none;
+
+  background-color: transparent;
+  background-image: url("../../../images/!isliked.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.card__like-btn_hidden {
+  display: none;
+}
+
+.card__like-btn_active {
+  background-image: url("../../../images/isliked.svg");
+}
+
 /* get the text in the cardtitle to fit inside the container still displaying all
 the text. */
 .card__title {
   width: max-content;
   margin: 0;
   background-color: white;
-  position: absolute;
-  top: 15px;
   color: #00000099;
   border-radius: 4px;
   line-height: 20px;

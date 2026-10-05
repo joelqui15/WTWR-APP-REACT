@@ -28,3 +28,21 @@
 .sideBar__avatar-name {
   margin: 0;
 }
+
+.sideBar__buttons {
+  display: flex;
+  flex-direction: column;
+  margin: 24px 0 0;
+  gap: 8px;
+}
+
+.sideBar__button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sideBar__button:hover {
+  border-bottom: 1px solid #000;
+}

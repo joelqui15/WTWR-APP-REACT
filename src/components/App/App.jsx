@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
@@ -23,6 +23,8 @@ import {
   addItem,
   removeItem,
   editUser,
+  addCardLike,
+  removeCardLike,
 } from "../../utils/api.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
@@ -44,6 +46,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     getWeatherData(coordinates, apiKey)
@@ -150,6 +153,13 @@ function App() {
       });
   }
 
+  function handleSignOut() {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser({});
+    navigate("/");
+  }
+
   function handleEditProfile(profileData) {
     const token = localStorage.getItem("jwt");
     editUser(profileData, token)
@@ -161,6 +171,26 @@ function App() {
         console.error(err);
       });
   }
+
+  const handleCardLike = ({ _id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+
+    !isLiked
+      ? addCardLike(_id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === _id ? updatedCard : item)),
+            );
+          })
+          .catch((err) => console.log(err))
+      : removeCardLike(_id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === _id ? updatedCard : item)),
+            );
+          })
+          .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -210,6 +240,8 @@ function App() {
                       weatherData={weatherData}
                       onClose={closeModal}
                       handleCardClick={handleCardClick}
+                      onCardLike={handleCardLike}
+                      isLoggedIn={isLoggedIn}
                     />
                   }
                 />
@@ -226,6 +258,9 @@ function App() {
                           openModal(modals.edit);
                         }}
                         handleCardClick={handleCardClick}
+                        onCardLike={handleCardLike}
+                        isLoggedIn={isLoggedIn}
+                        onSignOut={handleSignOut}
                       />
                     </ProtectedRoute>
                   }

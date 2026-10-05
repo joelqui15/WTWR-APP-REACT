@@ -3,7 +3,7 @@ import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 import "../SideBar/SideBar.css";
 import AvatarPic from "../../../images/user-avatar.png";
 
-function SideBar({ openEditModal }) {
+function SideBar({ openEditModal, onSignOut }) {
   const { name, avatar } = useContext(CurrentUserContext);
 
   return (
@@ -19,10 +19,18 @@ function SideBar({ openEditModal }) {
         <p className="sideBar__avatar-name">{name}</p>
       </div>
       <div className="sideBar__buttons">
-        <button className="sideBar__edit-button" onClick={openEditModal}>
+        <button
+          className="sideBar__edit-button sideBar__button"
+          onClick={openEditModal}
+        >
           Change profile data
         </button>
-        <button className="sideBar__logout-button">Log out</button>
+        <button
+          className="sideBar__logout-button sideBar__button"
+          onClick={onSignOut}
+        >
+          Log out
+        </button>
       </div>
     </aside>
   );

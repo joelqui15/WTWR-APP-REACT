@@ -4,12 +4,20 @@ import ClothesSection from "./ClothesSection/ClothesSection";
 import SideBar from "./SideBar/SideBar.jsx";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 
-function Profile({ clothingItems, openModal, handleCardClick, openEditModal }) {
+function Profile({
+  clothingItems,
+  openModal,
+  handleCardClick,
+  openEditModal,
+  onCardLike,
+  isLoggedIn,
+  onSignOut,
+}) {
   const currentUser = useContext(CurrentUserContext);
 
   return (
     <section className="profile">
-      <SideBar openEditModal={openEditModal} />
+      <SideBar openEditModal={openEditModal} onSignOut={onSignOut} />
 
       <div className="profile__content">
         <div className="profile__header">
@@ -34,6 +42,8 @@ function Profile({ clothingItems, openModal, handleCardClick, openEditModal }) {
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
                   key={item._id}
+                  onCardLike={onCardLike}
+                  isLoggedIn={isLoggedIn}
                 />
               );
             })}

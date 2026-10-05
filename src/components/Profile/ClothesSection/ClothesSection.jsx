@@ -1,8 +1,14 @@
 import ItemCard from "../../Main/ItemCard/ItemCard";
 
-function ClothesSection({ item, handleCardClick }) {
+function ClothesSection({ item, handleCardClick, onCardLike, isLoggedIn }) {
   return (
-    <ItemCard item={item} handleCardClick={handleCardClick} key={item._id} />
+    <ItemCard
+      item={item}
+      handleCardClick={handleCardClick}
+      onCardLike={onCardLike}
+      isLoggedIn={isLoggedIn}
+      key={item._id}
+    />
   );
 }
 
