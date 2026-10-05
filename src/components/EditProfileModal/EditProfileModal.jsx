@@ -64,7 +64,7 @@ function EditProfileModal({ isOpen, onClose, onEdit }) {
             id="name"
             type="text"
             name="name"
-            min-length={2}
+            minLength={2}
             className="form__input form__input-name"
             placeholder="Name"
             onChange={handleChange}

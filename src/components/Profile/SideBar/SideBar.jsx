@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 import "../SideBar/SideBar.css";
-import AvatarPic from "../../../images/user-avatar.png";
 
 function SideBar({ openEditModal, onSignOut }) {
   const { name, avatar } = useContext(CurrentUserContext);
