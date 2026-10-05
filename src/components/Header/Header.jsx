@@ -25,9 +25,11 @@ function Header({
       <Link to="/">
         <img className="header__logo" src={Logo} alt="WTWR LOGO" />
       </Link>
+
       <p className="header__date-location">
         {currentDate}, {weatherData.city}
       </p>
+
       <div className="header__actions">
         <ToggleSwitch />
 
@@ -37,32 +39,30 @@ function Header({
               + Add clothes
             </button>
 
-            <div className="header__avatar-section">
-              <p className="header__avatar-name">{name}</p>
-              {avatar ? (
-                <>
-                  <Link to="/profile">
-                    <img
-                      src={avatar}
-                      alt="User avatar"
-                      className="header__avatar-pic"
-                    />
-                  </Link>
-                </>
-              ) : (
-                <>
+            <Link to="/profile" className="header__profile-link">
+              <div className="header__avatar-section">
+                <p className="header__avatar-name">{name}</p>
+
+                {avatar ? (
+                  <img
+                    src={avatar}
+                    alt="User avatar"
+                    className="header__avatar-pic"
+                  />
+                ) : (
                   <div className="header__avatar-placeholder">
                     {name?.charAt(0).toUpperCase()}
                   </div>
-                </>
-              )}
-            </div>
+                )}
+              </div>
+            </Link>
           </>
         ) : (
           <div className="header__login-signup">
             <button className="header__sign-btn" onClick={openRegisterModal}>
               Sign Up
             </button>
+
             <button className="header__login-btn" onClick={openLoginModal}>
               Log In
             </button>

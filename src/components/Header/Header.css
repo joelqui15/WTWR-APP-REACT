@@ -47,6 +47,11 @@
   border-bottom: 1px solid black;
 }
 
+.header__profile-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .header__avatar-section {
   display: flex;
   align-items: center;

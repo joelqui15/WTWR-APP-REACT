@@ -162,9 +162,13 @@ function App() {
 
   function handleEditProfile(profileData) {
     const token = localStorage.getItem("jwt");
+
     editUser(profileData, token)
       .then((updatedUser) => {
-        setCurrentUser(updatedUser);
+        setCurrentUser((prev) => ({
+          ...prev,
+          ...updatedUser,
+        }));
         closeModal();
       })
       .catch((err) => {

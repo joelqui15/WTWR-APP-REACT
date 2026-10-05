@@ -1,8 +1,8 @@
 import { handleServerResponse } from "./api";
 
-function getWeatherData({ lat, lon }, apiKey) {
+function getWeatherData({ latitude, longitude }, apiKey) {
   return fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`,
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`,
   ).then((res) => {
     return handleServerResponse(res);
   });

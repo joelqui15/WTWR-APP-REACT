@@ -71,11 +71,14 @@ function RegistrationModal({
       onSubmit={handleSubmit}
     >
       <fieldset className=" form__fieldset form__fieldset-info">
-        <label htmlFor="email" className="form__label form__label-email">
+        <label
+          htmlFor="register-email"
+          className="form__label form__label-email"
+        >
           Email*
           <br />
           <input
-            id="email"
+            id="register-email"
             type="email"
             name="email"
             className="form__input form__input-email"
@@ -92,11 +95,14 @@ function RegistrationModal({
             </span>
           )}
         </label>
-        <label htmlFor="password" className="form__label form__label-password">
+        <label
+          htmlFor="register-password"
+          className="form__label form__label-password"
+        >
           Password*
           <br />
           <input
-            id="password"
+            id="register-password"
             type="password"
             name="password"
             className="form__input form__input-password"
@@ -113,11 +119,11 @@ function RegistrationModal({
             </span>
           )}
         </label>
-        <label htmlFor="name" className="form__label form__label-name">
+        <label htmlFor="register-name" className="form__label form__label-name">
           Name*
           <br />
           <input
-            id="name"
+            id="register-name"
             type="text"
             name="name"
             minLength={2}
@@ -135,11 +141,14 @@ function RegistrationModal({
             </span>
           )}
         </label>
-        <label htmlFor="avatar" className="form__label form__label-avatar">
+        <label
+          htmlFor="register-avatar"
+          className="form__label form__label-avatar"
+        >
           Avatar URL*
           <br />
           <input
-            id="avatar"
+            id="register-avatar"
             type="url"
             name="avatar"
             className="form__input form__input-avatar"
